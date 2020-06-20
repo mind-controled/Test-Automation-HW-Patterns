@@ -13,6 +13,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class OrderCardDeliveryTest {
     DataGenerator dataGenerator = new DataGenerator();
+
     @BeforeEach
     void Setup() {
         open("http://localhost:9999");
