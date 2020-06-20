@@ -20,9 +20,9 @@ public class OrderCardDeliveryTest {
 
     @Test
     void shouldSubmitRequest() {
-        String name = dataGenerator.makeName();
-        String phone = dataGenerator.makePhone();
-        String city = dataGenerator.makeCity();
+        String name = dataGenerator.getName();
+        String phone = dataGenerator.getPhone();
+        String city = dataGenerator.getCity();
 
         $("[placeholder='Город']").setValue(city);
         $("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
@@ -42,8 +42,8 @@ public class OrderCardDeliveryTest {
     @Test
     void shouldNotSubmitWithoutCity() {
         $("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
-        $("[name=name]").setValue(dataGenerator.makeName());
-        $("[name=phone]").setValue(dataGenerator.makePhone());
+        $("[name=name]").setValue(dataGenerator.getName());
+        $("[name=phone]").setValue(dataGenerator.getPhone());
         $(".checkbox__box").click();
         $(".button__text").click();
         $(".input_theme_alfa-on-white.input_invalid .input__sub").shouldHave(exactText("Поле обязательно для заполнения"));
@@ -51,9 +51,9 @@ public class OrderCardDeliveryTest {
 
     @Test
     void shouldNotSubmitWithoutName() {
-        $("[placeholder='Город']").setValue(dataGenerator.makeCity());
+        $("[placeholder='Город']").setValue(dataGenerator.getCity());
         $("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
-        $("[name=phone]").setValue(dataGenerator.makePhone());
+        $("[name=phone]").setValue(dataGenerator.getPhone());
         $(".checkbox__box").click();
         $(".button__text").click();
         $(".input_theme_alfa-on-white.input_invalid .input__sub").shouldHave(exactText("Поле обязательно для заполнения"));
@@ -61,10 +61,10 @@ public class OrderCardDeliveryTest {
 
     @Test
     void shouldNotSubmitWithIncorrectName() {
-        $("[placeholder='Город']").setValue(dataGenerator.makeCity());
+        $("[placeholder='Город']").setValue(dataGenerator.getCity());
         $("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
         $("[name=name]").setValue("Vasiliy Ivanov");
-        $("[name=phone]").setValue(dataGenerator.makePhone());
+        $("[name=phone]").setValue(dataGenerator.getPhone());
         $(".checkbox__box").click();
         $(".button__text").click();
         $(".input_theme_alfa-on-white.input_invalid .input__sub").shouldHave(exactText("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
@@ -72,9 +72,9 @@ public class OrderCardDeliveryTest {
 
     @Test
     void shouldNotSubmitWithoutPhone() {
-        $("[placeholder='Город']").setValue(dataGenerator.makeCity());
+        $("[placeholder='Город']").setValue(dataGenerator.getCity());
         $("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
-        $("[name=name]").setValue(dataGenerator.makeName());
+        $("[name=name]").setValue(dataGenerator.getName());
         $(".checkbox__box").click();
         $(".button__text").click();
         $(".input_theme_alfa-on-white.input_invalid .input__sub").shouldHave(exactText("Поле обязательно для заполнения"));
@@ -82,10 +82,10 @@ public class OrderCardDeliveryTest {
 
     @Test
     void shouldNotSubmitWithoutCheckbox() {
-        $("[placeholder='Город']").setValue(dataGenerator.makeCity());
+        $("[placeholder='Город']").setValue(dataGenerator.getCity());
         $("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
-        $("[name=name]").setValue(dataGenerator.makeName());
-        $("[name=phone]").setValue(dataGenerator.makePhone());
+        $("[name=name]").setValue(dataGenerator.getName());
+        $("[name=phone]").setValue(dataGenerator.getPhone());
         $(".button__text").click();
         $(".input_invalid").shouldHave(exactText("Я соглашаюсь с условиями обработки и использования моих персональных данных"));
     }
